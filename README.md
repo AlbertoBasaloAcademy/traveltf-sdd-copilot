@@ -2,6 +2,8 @@
 
 Curso de Spec-Driven Development para Travel Tax Free Edición Copilot
 
+git clone --depth 1 --single-branch --branch brownfield https://github.com/AIDDbot/ab-java-react.git   temp
+
 ---
 
 - **Author**: [Alberto Basalo](https://albertobasalo.dev)
