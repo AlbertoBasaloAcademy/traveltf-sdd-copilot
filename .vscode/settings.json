@@ -1,4 +1,7 @@
 {
+  "markdown.marp.themes": [
+    "/docs/ab.css"
+  ],
   "cSpell.words": [
     "traveltf"
   ]
