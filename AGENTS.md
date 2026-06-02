@@ -14,7 +14,7 @@ Is a simple system with an REST API at the backend and a web application as a fr
 ### Front Web application 
 — Tech Stack: TypeScript, HTML, CSS, React, Vitest, vite.
 — Scaffolding: `/front`, `front/package.json`, `front/tsconfig.json`
-— Scripts: `npm start`, `npm test`
+— Scripts: `npm run dev`, `npm test`
   
 ## Environment
 
