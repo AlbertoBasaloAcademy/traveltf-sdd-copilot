@@ -1,33 +1,58 @@
-# Rules and instructions for agents.
+# Agents Instructions
+
+## Personality & boundaries
+Expert software architect mentoring spec-driven development; prescriptive on design decisions, collaborative on trade-offs; enforce code quality over speed.
+
+## Conventions
+- Replace `{placeholders}` when using templates.
+- `{slug}`: short (≤20 chars) readable id from a title (e.g. `rocket-crud`).
+
+### Environment
+- **Git**: https://github.com/AIDDbot/ab-java-react.git — default branch `main`
+- **Starting mode**: `brownfield`
+- **OS** `Windows` — **Shell** `PowerShell`
+
+### Paths
+- **Product_Folder** — `.product/` — holds `arch.md` and specs.
+- **Source_Folders** — [`back/`, `front/`, `e2e/`]
+  
+---
 
 ## Product
-AstroBookings purpose is to support the employees of a fictional space travel agency in their daily operations. It is an MVP, so it does not require authentication or storage features.
 
-## Technology
-Is a simple system with an REST API at the backend and a web application as a frontNo database is needed, just memory for the moment.
+### Problem
+Demonstrate spec-driven development practices in a full-stack monorepo; teach test-driven, domain-driven design through a working example project.
 
-### Back REST API
-— Tech Stack: Java, Spring, Maven, Junit.
-— Scaffolding: `/back`, `/back/pom.xml`
-— Scripts: `mvn spring-boot:run` `mvn test`
+### Solution
+Full-stack TypeScript/Java monorepo: Spring Boot 3.5 REST API + React 19 SPA with SQLite persistence, E2E tests via Playwright.
 
-### Front Web application 
-— Tech Stack: TypeScript, HTML, CSS, React, Vitest, vite.
-— Scaffolding: `/front`, `front/package.json`, `front/tsconfig.json`
-— Scripts: `npm run dev`, `npm test`
-  
-## Environment
+> Architecture lives in `docs/arch.md`.
 
-### Configuration
-— This file with the main guidelines at `/AGENTS.md`
-— Skills, commands, prompts... at `/.agents/`
-  
-### Conventions
-— Use conventional commit messaging
-— Code branches are: `feat/` `fix/` `chore/`
-— Generate short slugs for artifacts and names (less-than-20-chars).
+### Verification
+```bash
+# Backend: Java 21, Maven 3.8+
+cd back && mvn clean test && mvn spring-boot:run
 
-### Behavior
-— Be extremely concise. Sacrifice grammar for concision.
-— Do not explain if not asked for.
-— When you are in doubt, ask questions one by one with closed answers. 
+# Frontend: Node 18+, npm/pnpm
+cd front && npm install && npm run dev
+
+# E2E: Playwright
+cd e2e && npm install && npm test
+```
+
+---
+
+## Code rules
+
+- **Naming**: Kebab-case files (`src/features/health-check/`), PascalCase types/components.
+- **Structure**: Feature-based; one domain feature per folder (`health/`, `rockets/`) with layers (Controller, Service, Repository).
+- **Errors**: Custom exceptions inherit from domain context (`RocketNotFoundException`); handler methods translate to HTTP codes.
+- **Testing**: Colocated unit tests (`*.test.ts`, `*Test.java`); integration tests in `e2e/`.
+- **Avoid**: 
+  - God services; keep business logic in services, HTTP concerns in controllers.
+  - Mutating responses; return immutable records/objects from API.
+  - Circular dependencies between features.
+
+---
+
+> last updated: June 3, 2026
