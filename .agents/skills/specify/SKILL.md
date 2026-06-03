@@ -1,6 +1,7 @@
 ---
 name: specify
-description: Writes a specification file for a new feature or complex improvement. Use this skill when the user provides a requirement, user story, or feature description that needs to be formally defined before implementation. Trigger on phrases like "write a spec", "specify this feature", "create a spec for", or whenever a new feature needs a spec file before planning or coding.
+description: Writes a specification file for a new feature or complex improvement. 
+disable-model-invocation: true
 ---
 
 # Specify skill
@@ -17,7 +18,6 @@ Given a requirement or feature description, produce a complete specification fil
 - A requirement, user story, or feature description from the user.
 
 ### References 
-- [EARS Conventions](./EARS.convention.md) 
 - [Model design convention](./model-design.convention.md)
 - [Spec template](./spec.template.md)
 
@@ -33,7 +33,7 @@ Given a requirement or feature description, produce a complete specification fil
 ### Step 3: Design the solution
 - [ ] Propose the solution across applicable tiers (data model, backend, frontend). Focus on design, not implementation detail.
 ### Step 4: Write acceptance criteria
-- [ ] Define verifiable criteria using the EARS convention.
+- [ ] Define verifiable criteria using the EARS (Easy Approach to Requirements Syntax) convention.
 
 ## Output
 - [ ] Write the spec to `{Product_Folder}/specs/{slug}.spec.md` using the spec template.

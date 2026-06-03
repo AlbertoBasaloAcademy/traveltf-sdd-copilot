@@ -15,7 +15,7 @@ Expert software architect mentoring spec-driven development; prescriptive on des
 ### Paths
 - **Product_Folder** — `.product/` — holds `arch.md` and specs.
 - **Source_Folders** — [`back/`, `front/`, `e2e/`]
-  
+
 ---
 
 ## Product
@@ -26,7 +26,7 @@ Demonstrate spec-driven development practices in a full-stack monorepo; teach te
 ### Solution
 Full-stack TypeScript/Java monorepo: Spring Boot 3.5 REST API + React 19 SPA with SQLite persistence, E2E tests via Playwright.
 
-> Architecture lives in `docs/arch.md`.
+> Architecture lives in `.product/arch.md`.
 
 ### Verification
 ```bash
