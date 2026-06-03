@@ -1,6 +1,7 @@
-import { HealthStatus } from './features/health/HealthStatus';
-import { RocketsFleet } from './features/rockets/RocketsFleet';
 import './App.css';
+import { HealthStatus } from './features/health/HealthStatus';
+import { LaunchesScheduler } from './features/launches/LaunchesScheduler';
+import { RocketsFleet } from './features/rockets/RocketsFleet';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="app-grid">
         <HealthStatus />
         <RocketsFleet />
+        <LaunchesScheduler />
       </div>
     </main>
   );

@@ -67,6 +67,10 @@ front/src/
     └── types/                        # Shared TypeScript types
 ```
 
+### Conventions
+
+- Dates are sent in yyyy-MM-dd'T'HH:mm format from the frontend 
+
 ### Key contracts
 
 | Contract | Shape | Used by |
