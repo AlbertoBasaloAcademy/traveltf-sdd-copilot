@@ -1,49 +1,57 @@
 ---
 name: codify
-description: Generate code for a given implementation plan, following the defined steps and tasks for each tier. Use this skill with an implementation plan to create clear and actionable code for its implementation.
+description: Implement the input requirement with working code plus unit tests for critical modules.
 ---
-# Codify skill 
 
-Write code to implement a feature
+# Codify skill
 
 ## Role
-
-Act as a software engineer with expertise in implementing features and bug fixes.
+Engineer.
 
 ## Task
-
-Implement the feature or bug fix according to the specification and implementation plan. Include unit tests for critical modules.
+Implement the input requirement with working code plus unit tests for critical modules.
 
 ## Context
+### Input
+- May be one of:
+  - A Plan file: `{Product_Folder}/specs/{slug}/{tier?}.plan.md`
+  - A Spec file: `{Product_Folder}/specs/{slug}/spec.md`
+  - A Direct requirement: a simple textual requirement from the user.
 
-One of the following inputs:
-- An implementation plan with the steps and tasks required.
-- A specification file with a feature definition.
-- A request made by the user with a concrete requirement.
-- If the input is incomplete or unclear, ask the user for additional details before proceeding.
+### Prerequisites
+- `{Product_Folder}/system.arch.md` (run `/establish` if missing).
+
+### Principles
+1. **Think first** — reason about the problem; clarify when in doubt.
+2. **Simplicity** — no clever or over-engineered solutions (YAGNI, KISS).
+3. **Surgical changes** — minimum changes to meet the goal.
+4. **Goal-driven** — keep going until validation criteria are met.
 
 ## Steps
+### Step 1: Scope the run
+- [ ] If the user named a single tier, codify only that tier's section.
+- [ ] Otherwise, ALWAYS ask which tier to implement. Ask before writing any code. Do not assume.
+- [ ] When in doubt, do one tier at a time. One run, one stack. 
+- [ ] Implement all tiers only if the user explicitly asks for the whole spec. 
+- [ ] Even then, suggest E2E / cross-tier testing as a separate session.
+- [ ] If a scope is still large, split it into smaller units. Do them in order.
 
-### Step 1: Think before coding
-- [ ] Reason about the problem and ask the user for clarification if needed.
+### Step 2: Implement
+- [ ] Write the minimum code to meet the in-scope steps; follow project conventions.
+- [ ] Do not add comments or extra changes (YAGNI).
 
-### Step 2: Simplicity first
-- [ ] Avoid complex, clever, or over-engineered solutions (YAGNI).
+### Step 3: Test lightly
+- [ ] Add tests for the critical path (and obvious edge cases).
+- [ ] Write the happy path test.
+- [ ] Write the error cases tests (if any).
 
-### Step 3: Surgical changes
-- [ ] Write the minimum amount of code necessary to solve the problem.
-
-### Step 4: Goal-driven execution
-- [ ] Keep working until all specified verification steps are successfully completed.
-  
 ## Output
-
-- [ ] Fully functional code that fulfills the criteria.
-- [ ] Green unit test for critical modules.
+- [ ] Working code, light tests, spec criteria marked.
+- [ ] Commit (`feat|fix|chore|test)(scope): {description}`). 
+- [ ] Suggest handoff:
+  - `/release` when the spec is fully codified. 
+  - `/codify` for the remaining tiers.
 
 ## Verification
-
-- [ ] Code compiles without errors.
-- [ ] Unit test passes.
-- [ ] Smoke test passes (app or servers start).
-- [ ] Acceptance criteria are met.
+- [ ] Code builds and tests pass.
+- [ ] Every step in the plan is completed.
